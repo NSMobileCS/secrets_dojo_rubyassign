@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if u
       redirect_to '/users/' + u.id.to_s
     else
-      flash[:errors] = ["the users_controller experienced a fault"]
+      flash[:errors] = ["the users_controller experienced a fault and or bad password!!"]
       redirect_to "/sessions/new"
     end
   end

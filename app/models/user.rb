@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { in: 2..40 }
   validates :email, presence: true, length: { in: 2..40 }, format: { with: EMAIL_REGEX }
 
+  has_many :secrets
+  has_many :likes, dependent: :destroy
+  has_many :secrets_liked, through: :likes, source: :secret
+
   before_save :email_lowercase
 
   def email_lowercase
