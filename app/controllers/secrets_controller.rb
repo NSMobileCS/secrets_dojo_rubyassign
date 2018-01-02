@@ -17,7 +17,7 @@ class SecretsController < ApplicationController
   def destroy
     user = User.find(session[:user_id])
     secret = Secret.find(params[:id])
-    if secret and secret.user.id == params[:user_id]
+    if secret and secret.user.id == user.id
       secret.destroy
     else
       flash[:errors] = ['invalid deletion request']

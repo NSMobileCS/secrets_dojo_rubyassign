@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post 'secrets/:id/like' => 'likes#create'
+  post 'likes/secrets/:id/like' => 'likes#create'
 
-  post 'secrets/:id/unlike' => 'likes#destroy'
+  post 'likes/secrets/:id/unlike' => 'likes#destroy'
 
   get 'secrets' => 'secrets#index'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   post 'secrets' => 'secrets#create'
   post 'secrets/:id/delete' => 'secrets#destroy'
-  post 'secrets/:id/like' => 'likes#create'
+
   get '' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
