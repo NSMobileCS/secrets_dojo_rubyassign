@@ -4,9 +4,10 @@ class SessionsController < ApplicationController
 
     def create
       @user = User.find_by_email(params[:email])
-      if @user && @user.authenticate(params[:password])
+      if @user && @user.try(:authenticate, params[:password])
           session[:user_id] = @user.id
-          redirect_to "/users/" + @user.id.to_s
+          redirect_to "/secrets"
+        #   redirect_to "/users/" + @user.id.to_s
       else
           flash[:errors] = ["invalid username password combination"]
           redirect_to "/sessions/new"

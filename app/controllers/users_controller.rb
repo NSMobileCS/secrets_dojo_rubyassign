@@ -4,12 +4,10 @@ class UsersController < ApplicationController
 
   def create
     u = User.create(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation] )
-    if u
-      redirect_to '/users/' + u.id.to_s
-    else
+    unless u
       flash[:errors] = ["the users_controller experienced a fault and or bad password!!"]
-      redirect_to "/sessions/new"
     end
+    redirect_to "/secrets"
   end
 
   def show
